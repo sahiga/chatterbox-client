@@ -19,7 +19,7 @@ var getQuote = function() {
   });
 };
 
-setInterval(getQuote, 60000);
+setInterval(getQuote, 10000);
 
 
 
