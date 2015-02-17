@@ -74,6 +74,11 @@ var app = {
                     .addClass('failure');
       }
     });
+  },
+
+  clearMessages: function() {
+    var $chats = $('#chats');
+    $chats.children().remove();
   }
 };
 
