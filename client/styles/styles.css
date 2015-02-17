@@ -1,18 +1,18 @@
 body {
-    background: #eee;
-    text-align: center;
-    padding: 0 25px;
-    font-family: arial, sans-serif;
+    background: url('../images/school.png') #eee;
+/*    padding: 0 25px;*/
+    color: #222;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 
 #main {
-    width: 500px;
-    margin: auto;
-    text-align: left;
-    background: white;
+/*    width: 500px;
+    margin: auto;*/
+   /* background: white;
     padding: 50px 60px;
     border: solid #ddd;
-    border-width: 0 1px 1px 1px;
+    border-width: 0 1px 1px 1px;*/
 }
 
 #main h1 {
@@ -46,6 +46,10 @@ body {
     line-height: 13px;
 }
 
+#chats {
+/*  height: 600px;
+  overflow-y: auto;*/
+}
 
 
 form {
@@ -85,6 +89,49 @@ form input[type=text] {
     padding: 10px;
 }
 
-#send-message {
-    border: 1px solid black;
+/***************
+Input Fields
+****************/
+input, textarea {
+  display: block;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  width: 200px;
+  font-size: 0.8em;
+  border: 1px solid #fff9e6;
+  border-radius: 4px;
+}
+
+.button {
+  padding: 0.5em;
+  width: 200px;
+  background: #7DE5DD;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: -1px -1px 1px #6cbdb3;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px #6cbdb3;
+}
+
+/***************
+Message Styling
+****************/
+.message {
+  padding: 0.5em 1em;
+}
+
+.message:nth-child(odd) {
+  background: #fff9e6;
+  background: rgba(255, 249, 232, 0.5);
+}
+
+.username {
+  font-size: 0.8em;
+}
+
+.text {
+  font-size: 1.5em;
+  font-weight: 300;
+  margin: 0.5em 0;
 }
