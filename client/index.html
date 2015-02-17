@@ -5,7 +5,7 @@
     <title>chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
 
-    <!-- dependencies -->
+    <!-- dependencies -->$('#status').text('Your message was successfully sent!');
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/he/he.js"></script>
@@ -17,8 +17,15 @@
   <body>
     <div id="main">
       <h1>chatterbox</h1>
+      <div id="send">
+        <input id="user" type="text" placeholder="Enter username">
+        <input id="message" type="text" placeholder="Enter message here">
+        <input id="room" type="text" placeholder="Enter room here">
+        <div id="send-message" class="submit">Send message</div>
+      </div>
+      <p id="status"></p>
       <!-- Your HTML goes here! -->
-      <div id="message-list"></div>
+      <div id="chats"></div>
     </div>
   </body>
 </html>
