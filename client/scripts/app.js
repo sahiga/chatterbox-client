@@ -2,6 +2,7 @@ var app = {
   lastCreated: '2015-02-17T00:50:32.494Z',
   currentRoom: undefined,
   server: 'https://api.parse.com/1/classes/chatterbox',
+  rooms: {},
 
   init: function() {
     var context = this;
@@ -9,14 +10,22 @@ var app = {
       context.fetch();
     }, 2000);
 
+    var filterRoom = function() {
+      var $element = $(this);
+      var name =  $element.val() || $element.text();
+
+      if (name === 'Global') {
+        name = undefined;
+      }
+
+      context.filterRoom(name);
+    };
+
     // add interactivity
     $('#send-message').click(this.send); // THIS WAS .addMessage
     // Add click handler to room name in each message
-    $(document).on('click', '.roomname', function() {
-      var name = $(this).text();
-      console.log(name);
-      context.filterRoom(name);
-    });
+    $(document).on('click', '.roomname', filterRoom);
+    $(document).on('change', '#roomSelect', filterRoom);
   },
 
   cleanData: function(unsafe) {
@@ -52,6 +61,19 @@ var app = {
 
   },
 
+  addNewRooms: function(messages) {
+    var $options = $('#roomSelect');
+    for (var i = 0; i < messages.length; i++) {
+      var room = this.cleanData(messages[i].roomname);
+
+      if (!(room in this.rooms)) {
+        var option = '<option class="room-select">' + room + '</option>';
+        $options.append(option);
+        this.rooms[room] = true;
+      }
+    }
+  },
+
   fetch: function() {
     var context = this;
 
@@ -80,7 +102,7 @@ var app = {
         if (messages[0] !== undefined) {
           context.lastCreated = messages[0].createdAt; // get most up-to-date timestamp
         }
-
+        context.addNewRooms(messages);
         context.displayMessages(messages);
       },
       error: function() {
