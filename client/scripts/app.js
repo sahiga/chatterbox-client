@@ -8,6 +8,7 @@ var app = {
       context.fetch();
     }, 2000);
 
+    // add interactivity
     $('#send-message').click(this.send);
   },
 
@@ -17,8 +18,10 @@ var app = {
   },
 
   displayMessages: function(messages) {
+    var context = this;
     var $messageList = $('#chats');
 
+    // iterate through message array (containing message objects)
     for (var i = 0; i < messages.length; i++) {
       var message = messages[i];
       var username = this.cleanData(message.username);
@@ -38,6 +41,13 @@ var app = {
         '</div>';
       $messageList.prepend(messageDiv);
     }
+
+    // Add click handler to room name in each message
+    $('.roomname').click(function() {
+      var name = $(this).text();
+      console.log(name);
+      context.filterRoom(name);
+    });
   },
 
   fetch: function() {
