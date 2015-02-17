@@ -17,10 +17,7 @@
     <script src="scripts/app.js"></script>
   </head>
   <body>
-    <aside id="sidebar"></aside>
-    <section id="main">
-      <!-- Your HTML goes here! -->
-      <h1>chatterbox</h1>
+    <aside id="sidebar">
       <div id="send">
         <input id="user" type="text" placeholder="Enter username">
         <input id="room" type="text" placeholder="Enter room here">
@@ -28,6 +25,16 @@
         <div id="send-message" class="submit button">Send message</div>
       </div>
       <p id="status"></p>
+
+      <!-- Room Select -->
+      <select id="roomSelect">
+        <option>Select Room</option>
+      </select>
+    </aside>
+
+    <section id="main">
+      <!-- Your HTML goes here! -->
+      <h1>chatterbox</h1>
       <div id="chats"></div>
     </section>
   </body>
