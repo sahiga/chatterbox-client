@@ -1,5 +1,6 @@
 var app = {
   lastCreated: '2015-02-17T00:50:32.494Z',
+  currentRoom: undefined,
 
   init: function() {
     var context = this;
@@ -22,9 +23,17 @@ var app = {
       var message = messages[i];
       var username = this.cleanData(message.username);
       var text = this.cleanData(message.text);
+      var roomname = this.cleanData(message.roomname);
       var messageDiv =
         '<div class="message">' +
-          '<p class="username">' + username + '</p>' +
+          '<div class="row">' +
+            '<div class="col6">' +
+              '<a class="username">' + username + '</a>' +
+            '</div>' +
+            '<div class="col6 text-right">' +
+              '<a class="roomname">' + roomname + '</a>' +
+            '</div>' +
+          '</div>' +
           '<p class="text">' + text + '</p>' +
         '</div>';
       $messageList.prepend(messageDiv);
@@ -33,11 +42,26 @@ var app = {
 
   fetch: function() {
     var context = this;
+
+    var where = {
+      createdAt: {
+        '$gt': context.lastCreated
+      }
+    };
+    // extend where defaults
+    if (context.currentRoom !== undefined) {
+      _.extend(where, {roomname: context.currentRoom});
+    }
+
+    var data = {
+      order: '-createdAt',
+      where: where
+    };
+
     $.ajax({
       url: 'https://api.parse.com/1/classes/chatterbox',
       type: 'GET',
-      data: 'order=-createdAt&where={"createdAt":{"$gt":"' + context.lastCreated + '"}}',
-      // data: JSON.stringify({order: "-createdAt", where: {"createdAt": {"$gt": context.lastCreated}}}),
+      data: data,
       success: function(response) {
         var messages = response.results;
         context.lastCreated = messages[0].createdAt; // get most up-to-date timestamp
@@ -84,6 +108,12 @@ var app = {
   addRoom: function(roomName) {
     var $roomSelect = $('#roomSelect');
     $roomSelect.append('<option>' + roomName + '</option>');
+  },
+
+  filterRoom: function(roomName) {
+    this.clearMessages();
+    this.currentRoom = roomName;
+    this.fetch();
   }
 };
 
