@@ -49,13 +49,16 @@ var app = {
     });
   },
 
-  send: function() {
+  send: function(message) {
     console.log("Sent!");
-    var message = {
+
+    var defaults = {
       username : $('#user').val(),
       text: $('#message').val(),
       roomname: $('#room').val()
     };
+
+    var message = message || defaults;
 
     $.ajax({
       url: 'https://api.parse.com/1/classes/chatterbox',
@@ -77,5 +80,7 @@ var app = {
 $(document).ready(function(){
   app.init();
 });
+
+
 
 
