@@ -46,6 +46,8 @@ body {
     line-height: 13px;
 }
 
+
+
 form {
     padding: 20px;
     padding-left: 0;
@@ -81,4 +83,8 @@ form input[type=text] {
 
 .spinner img {
     padding: 10px;
+}
+
+#send-message {
+    border: 1px solid black;
 }
