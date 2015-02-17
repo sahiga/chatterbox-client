@@ -75,7 +75,11 @@ var app = {
       data: data,
       success: function(response) {
         var messages = response.results;
-        context.lastCreated = messages[0].createdAt; // get most up-to-date timestamp
+
+        if (messages[0] !== undefined) {
+          context.lastCreated = messages[0].createdAt; // get most up-to-date timestamp
+        }
+
         context.displayMessages(messages);
       },
       error: function() {
