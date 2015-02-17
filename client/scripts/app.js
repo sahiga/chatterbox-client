@@ -10,6 +10,12 @@ var app = {
 
     // add interactivity
     $('#send-message').click(this.send);
+    // Add click handler to room name in each message
+    $(document).on('click', '.roomname', function() {
+      var name = $(this).text();
+      console.log(name);
+      context.filterRoom(name);
+    });
   },
 
   cleanData: function(unsafe) {
@@ -42,12 +48,7 @@ var app = {
       $messageList.prepend(messageDiv);
     }
 
-    // Add click handler to room name in each message
-    $('.roomname').click(function() {
-      var name = $(this).text();
-      console.log(name);
-      context.filterRoom(name);
-    });
+
   },
 
   fetch: function() {
