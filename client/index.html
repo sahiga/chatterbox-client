@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>chatterbox</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- dependencies -->
@@ -15,17 +16,18 @@
     <script src="scripts/app.js"></script>
   </head>
   <body>
-    <div id="main">
+    <aside id="sidebar"></aside>
+    <section id="main">
+      <!-- Your HTML goes here! -->
       <h1>chatterbox</h1>
       <div id="send">
         <input id="user" type="text" placeholder="Enter username">
-        <input id="message" type="text" placeholder="Enter message here">
         <input id="room" type="text" placeholder="Enter room here">
-        <div id="send-message" class="submit">Send message</div>
+        <textarea id="message" type="text" placeholder="Enter message here"></textarea>
+        <div id="send-message" class="submit button">Send message</div>
       </div>
       <p id="status"></p>
-      <!-- Your HTML goes here! -->
       <div id="chats"></div>
-    </div>
+    </section>
   </body>
 </html>

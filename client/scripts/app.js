@@ -1,11 +1,11 @@
 var app = {
-  lastCreated: '2015-02-17T00:33:32.494Z',
+  lastCreated: '2015-02-17T00:50:32.494Z',
 
   init: function() {
     var context = this;
     setInterval(function() {
       context.fetch();
-    }, 5000);
+    }, 2000);
 
     $('#send-message').click(this.send);
   },
@@ -23,8 +23,10 @@ var app = {
       var username = this.cleanData(message.username);
       var text = this.cleanData(message.text);
       var messageDiv =
-        '<div class="message"><span class="username">' +
-          username + '</span>' + text + '</div>';
+        '<div class="message">' +
+          '<p class="username">' + username + '</p>' +
+          '<p class="text">' + text + '</p>' +
+        '</div>';
       $messageList.prepend(messageDiv);
     }
   },
@@ -34,7 +36,8 @@ var app = {
     $.ajax({
       url: 'https://api.parse.com/1/classes/chatterbox',
       type: 'GET',
-      data: 'order=-createdAt&where={"createdAt":{"$gte":"' + context.lastCreated + '"}}',
+      data: 'order=-createdAt&where={"createdAt":{"$gt":"' + context.lastCreated + '"}}',
+      // data: JSON.stringify({order: "-createdAt", where: {"createdAt": {"$gt": context.lastCreated}}}),
       success: function(response) {
         var messages = response.results;
         context.lastCreated = messages[0].createdAt; // get most up-to-date timestamp
@@ -49,7 +52,7 @@ var app = {
   send: function() {
     console.log("Sent!");
     var message = {
-      username: $('#user').val(),
+      username : $('#user').val(),
       text: $('#message').val(),
       roomname: $('#room').val()
     };
