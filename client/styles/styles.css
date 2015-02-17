@@ -7,25 +7,47 @@ body {
 }
 
 a {
-  color: #009C90;
   text-decoration: none;
   cursor: pointer;
+}
+
+a:hover {
+  opacity: 0.8;
 }
 
 .text-right {
   text-align: right;
 }
 
-#main {
-/*    width: 500px;
-    margin: auto;*/
-   /* background: white;
-    padding: 50px 60px;
-    border: solid #ddd;
-    border-width: 0 1px 1px 1px;*/
+h1 {
+  color: #fff;
+  font-size: 2em;
 }
 
-#main h1 {
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 1em;
+  width: 216px;
+  color: #fff;
+  background: #444;
+  background: rgba(4, 4, 4, 0.5);
+  z-index: 100;
+  box-shadow: 1px 0 2px #222;
+}
+
+#main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 248px;
+ /* margin: 0 0 0 248px;*/
+}
+
+/*#main h1 {
     margin-top: 0;
     font-size: 35px;
     margin-bottom: 5px;
@@ -38,8 +60,8 @@ a {
 
 #main ul {
     padding-left: 20px;
-}
-
+}*/
+/*
 #main .error {
     border: 1px solid red;
     background: #FDEFF0;
@@ -54,7 +76,7 @@ a {
     font-size: 12px;
     color: green;
     line-height: 13px;
-}
+}*/
 
 #chats {
 /*  height: 600px;
@@ -99,6 +121,10 @@ form input[type=text] {
     padding: 10px;
 }
 
+#status {
+  font-size: 0.7em;
+}
+
 /***************
 Input Fields
 ****************/
@@ -108,20 +134,26 @@ input, textarea {
   padding: 0.5em;
   width: 200px;
   font-size: 0.8em;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   border: 1px solid #fff9e6;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 .button {
   padding: 0.5em;
   width: 200px;
-  background: #7DE5DD;
+  background: #B9B3C2;
   color: #fff;
   font-weight: 700;
   text-align: center;
-  text-shadow: -1px -1px 1px #6cbdb3;
-  border-radius: 4px;
-  box-shadow: 1px 1px 2px #6cbdb3;
+  cursor: pointer;
+  text-shadow: -1px -1px 1px #6A5A7E;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px #5a5a5a;
+}
+
+.button:hover {
+  opacity: 0.8;
 }
 
 /***************
@@ -136,8 +168,18 @@ Message Styling
   background: rgba(255, 249, 232, 0.5);
 }
 
-.username, .roomname {
+.username {
   font-size: 0.8em;
+  padding: 0.2em 0.5em;
+  color: #fff;
+  background: #6A5A7E;
+  text-shadow: -1px -1px 1px #6f6f6f;
+  border-radius: 6px;
+}
+
+.roomname {
+  font-size: 0.7em;
+  color: #6A5A7E;
 }
 
 .text {

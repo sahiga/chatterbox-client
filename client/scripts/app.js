@@ -1,6 +1,7 @@
 var app = {
   lastCreated: '2015-02-17T00:50:32.494Z',
   currentRoom: undefined,
+  server: 'https://api.parse.com/1/classes/chatterbox',
 
   init: function() {
     var context = this;
@@ -9,7 +10,7 @@ var app = {
     }, 2000);
 
     // add interactivity
-    $('#send-message').click(this.send);
+    $('#send-message').click(this.send); // THIS WAS .addMessage
     // Add click handler to room name in each message
     $(document).on('click', '.roomname', function() {
       var name = $(this).text();
@@ -70,7 +71,7 @@ var app = {
     };
 
     $.ajax({
-      url: 'https://api.parse.com/1/classes/chatterbox',
+      url: context.server,
       type: 'GET',
       data: data,
       success: function(response) {
@@ -89,6 +90,7 @@ var app = {
   },
 
   send: function(message) {
+    var context = this;
     console.log("Sent!");
 
     var defaults = {
@@ -100,7 +102,7 @@ var app = {
     var message = message || defaults;
 
     $.ajax({
-      url: 'https://api.parse.com/1/classes/chatterbox',
+      url: context.server,
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',
