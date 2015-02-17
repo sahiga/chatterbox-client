@@ -79,6 +79,11 @@ var app = {
   clearMessages: function() {
     var $chats = $('#chats');
     $chats.children().remove();
+  },
+
+  addRoom: function(roomName) {
+    var $roomSelect = $('#roomSelect');
+    $roomSelect.append('<option>' + roomName + '</option>');
   }
 };
 
