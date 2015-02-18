@@ -130,8 +130,8 @@ Message Styling
   box-shadow: 1px 0 2px #222;
 }
 
-.friends-title {
-  margin: 3em 0 0.5em 0;
+.sidebar-title {
+  margin: 2em 0 0.5em 0;
 }
 
 #friends {
@@ -139,12 +139,23 @@ Message Styling
   margin: 0 0 0 -42px;
 }
 
-.friend-list-item {
+.friends-list-item {
   display: block;
   padding: 0.5em 0;
   border-width: 1px 0 0 0;
   border-color: #7e7e7e;
   border-style: solid;
+}
+
+#roomSelect {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+  border: 1px solid #7e7e7e;
+  color: #7de5dd;
+  background: transparent;
+  width: 216px;
+  text-transform: uppercase;
 }
 
 /***************

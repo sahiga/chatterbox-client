@@ -34,7 +34,7 @@ var app = {
       var friend = $(this).text();
       if (!(friend in context.friends)) {
         context.friends[friend] = true;
-        $('#friends').append('<li class="friend-list-item">' + friend + '</li>');
+        $('#friends').append('<li class="friends-list-item">' + friend + '</li>');
         $(this).removeClass('enemy').addClass('friend');
       }
     });
