@@ -23,7 +23,10 @@ var app = {
     };
 
     // add interactivity
-    $('#send-message').click(this.send); // THIS WAS .addMessage
+    $('#send-message').click(function(e) {
+      e.preventDefault();
+      context.send();
+    });
     // Add click handler to room name in each message
     $(document).on('click', '.roomname', filterRoom);
     $(document).on('change', '#roomSelect', filterRoom);
@@ -136,6 +139,7 @@ var app = {
       roomname: $('#room').val()
     };
 
+    console.log(typeof message);
     var message = message || defaults;
 
     $.ajax({
