@@ -3,6 +3,7 @@ var app = {
   currentRoom: undefined,
   server: 'https://api.parse.com/1/classes/chatterbox',
   rooms: {},
+  friends: {},
 
   init: function() {
     var context = this;
@@ -26,6 +27,14 @@ var app = {
     // Add click handler to room name in each message
     $(document).on('click', '.roomname', filterRoom);
     $(document).on('change', '#roomSelect', filterRoom);
+    $(document).on('click', '.username', function() {
+      var friend = $(this).text();
+      if (!(friend in context.friends)) {
+        context.friends[friend] = true;
+        $('#friends').append('<li class="friend-list-item">' + friend + '</li>');
+        $(this).removeClass('enemy').addClass('friend');
+      }
+    });
   },
 
   cleanData: function(unsafe) {
@@ -39,15 +48,21 @@ var app = {
 
     // iterate through message array (containing message objects)
     for (var i = 0; i < messages.length; i++) {
+      var friendClass = 'enemy';
       var message = messages[i];
       var username = this.cleanData(message.username);
       var text = this.cleanData(message.text);
       var roomname = this.cleanData(message.roomname);
+
+      if (username in this.friends) {
+        friendClass = 'friend';
+      }
+
       var messageDiv =
         '<div class="message">' +
           '<div class="row">' +
             '<div class="col6">' +
-              '<a class="username">' + username + '</a>' +
+              '<a class="username ' + friendClass + '">' + username + '</a>' +
             '</div>' +
             '<div class="col6 text-right">' +
               '<a class="roomname">' + roomname + '</a>' +
@@ -67,7 +82,7 @@ var app = {
       var room = this.cleanData(messages[i].roomname);
 
       if (!(room in this.rooms)) {
-        var option = '<option class="room-select">' + room + '</option>';
+        var option = '<option>' + room + '</option>';
         $options.append(option);
         this.rooms[room] = true;
       }

@@ -7,7 +7,7 @@ var getQuote = function() {
       var quote = response.value.joke;
       var message = {
         username : "Chuck Norris",
-        text: quote,
+        text: quote,//.split("").reverse().join(""),
         roomname: "Everywhere"
       };
       app.send(message);
