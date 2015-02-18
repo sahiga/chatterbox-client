@@ -1,6 +1,5 @@
 body {
     background: url('../images/school.png') #eee;
-/*    padding: 0 25px;*/
     color: #222;
     font-family: "Lato", Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -22,20 +21,6 @@ a:hover {
 h1 {
   color: #fff;
   font-size: 2em;
-}
-
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  padding: 1em;
-  width: 216px;
-  color: #fff;
-  background: #444;
-  background: rgba(4, 4, 4, 0.5);
-  z-index: 100;
-  box-shadow: 1px 0 2px #222;
 }
 
 #main {
@@ -126,7 +111,7 @@ form input[type=text] {
 }
 
 .success {
-  color: rgb(104, 202, 104);
+  color: #B9B3C2;
 }
 
 .failure {
@@ -196,6 +181,44 @@ Message Styling
   margin: 0.5em 0;
 }
 
+.friend {
+  background: #347C7C;
+}
+
+/***************
+ Sidebar
+****************/
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 1em;
+  width: 216px;
+  color: #fff;
+  background: #444;
+  background: rgba(4, 4, 4, 0.5);
+  z-index: 100;
+  box-shadow: 1px 0 2px #222;
+}
+
+.friends-title {
+  margin: 3em 0 0.5em 0;
+}
+
+#friends {
+  list-style: none;
+  margin: 0 0 0 -42px;
+}
+
+.friend-list-item {
+  display: block;
+  padding: 0.5em 0;
+  border-width: 1px 0 0 0;
+  border-color: #7e7e7e;
+  border-style: solid;
+}
+
 /***************
  Layout
 ****************/
@@ -254,7 +277,6 @@ Message Styling
   }
 
   #sidebar {
-    /*display: none;*/
     position: relative;
     width: 250px;
     display: block;
