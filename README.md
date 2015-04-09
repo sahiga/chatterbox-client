@@ -1,2 +1,5 @@
 #chatterbox-client
-This is a project I completed as a student at [Hack Reactor](http://hackreactor.com). This project was worked on with a pair.
+
+![Chatterbox Client](client/images/chatterbox-client.png)
+
+This is a project I completed with a pair at [Hack Reactor](http://hackreactor.com).
